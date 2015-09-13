@@ -6,7 +6,7 @@ var items = [];
 for (var i = 0; i < 500; i++) {
     items.push({
         id: i,
-        title: 'item #' + i
+        title: '#' + new Intl.NumberFormat().format(i)
     });
 }
 
@@ -26,7 +26,7 @@ export default class InfiniteListExample extends React.Component {
             <InfiniteList
                 className="custom-list-class"
                 items={items}
-                height={150}
+                height={250}
                 itemHeight={20}
                 listItemClass={InfiniteListItem}
             />

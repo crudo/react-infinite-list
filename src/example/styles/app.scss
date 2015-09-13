@@ -1,7 +1,7 @@
 .infinite-list {
     overflow: auto;
-    width: 100px;
-    background: bisque;
+    width: 250px;
+    background: lime;
     position: relative;
     -webkit-overflow-scrolling: touch;
 }
@@ -12,5 +12,7 @@
 }
 
 .infinite-list-item {
-    height: 20px;
+    font-family: sans-serif;
+    font-size: 6px;
+    height: 10px;
 }

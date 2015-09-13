@@ -154,7 +154,7 @@ export default class InfiniteList extends React.Component {
                  onScroll={this.onScroll.bind(this)}
                  style={{height: this.props.height}}>
 
-                <div className="infinite-list-content" style={{height: totalHeight - paddingTop, paddingTop: paddingTop}}>
+                <div className="infinite-list-content" style={{height: totalHeight - paddingTop, transform: 'translate(0px, '+paddingTop+'px)'}}>
                     {listItems}
                 </div>
             </div>

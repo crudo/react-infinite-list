@@ -3,12 +3,12 @@ import InfiniteList from '../InfiniteList';
 import _ from 'lodash';
 
 const PAGE_SIZE = 20;
-const TOTAL_COUNT = 10001;
+const TOTAL_COUNT = 10 * (1000 * 1000) + 1;
 
 const items = _.times(TOTAL_COUNT, (id) => ({ id }));
 
 _.take(items, PAGE_SIZE).forEach((item, index) => {
-    item.title = `item #${index}`;
+    item.title = '# ' + new Intl.NumberFormat().format(index);
 });
 
 const isItemLoading = (item) => _.isEmpty(item.title);
@@ -66,7 +66,7 @@ function createItems(offset, count) {
         let number = offset + i;
         items.push({
             id: number,
-            title: 'item #' + number
+            title: '# ' + new Intl.NumberFormat().format(number)
         });
     }
 
@@ -84,7 +84,7 @@ function fetchData(page) {
                 items: createItems(offset, count)
             };
             resolve(response);
-        }, 100);
+        }, 20);
     });
 }
 
@@ -92,7 +92,7 @@ class LoadingListItem extends React.Component {
     render() {
         return (
             <div key={this.props.id} className="infinite-list-item item-loading">
-                Loading...
+                ...
             </div>
         );
     }
@@ -139,8 +139,8 @@ export default class InfiniteListExample extends React.Component {
         return <InfiniteList
             className="custom-list-class"
             items={this.state.items}
-            height={150}
-            itemHeight={20}
+            height={550}
+            itemHeight={10}
             onRangeChange={this.onRangeChange.bind(this)}
             paging={true}
             isItemLoading={isItemLoading}
